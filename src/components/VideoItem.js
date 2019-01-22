@@ -8,7 +8,7 @@ const VideoItem = props => {
 
     return (
         <div onClick={() => props.onVideoSelect(props.video)} className="video-item item">
-            <img className="ui image" src={image}></img>
+            <img alt={title} className="ui image" src={image}></img>
             <div className="content">
                 <div className="header">
                     {title}
