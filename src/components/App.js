@@ -3,6 +3,7 @@ import youtube from '../api/youtube';
 // COMPONENTS
 import SearchBar from './SearchBar';
 import VideoList from './VideoList';
+import VideoDetail from './VideoDetail';
 
 class App extends Component {
 
@@ -18,14 +19,21 @@ class App extends Component {
         });
         this.setState({ videos: response.data.items });
     }
+    onVideoSelect = video => {
+        this.setState({ selectedVideo: video });
+    }
     render() {
         return (
             <div className="ui container">
                 <SearchBar
                     onFormSubmit={this.onTermSubmit}
                 />
+                <VideoDetail
+                    video={this.state.selectedVideo}
+                />
                 <VideoList 
                     videos={this.state.videos}
+                    onVideoSelect={this.onVideoSelect}
                 />
             </div>
         );
